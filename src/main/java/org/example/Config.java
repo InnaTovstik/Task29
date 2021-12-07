@@ -9,27 +9,27 @@ import java.util.List;
 public class Config {
 
     @Bean
-    public Card createCard1() {
+    public Card card1() {
         return new Card(Suit.CLUBS, Rank.JACK);
     }
 
     @Bean
-    public Card createCard2() {
+    public Card card2() {
         return new Card(Suit.DIAMONDS, Rank.KING);
     }
 
     @Bean
-    public Card createCard3() {
+    public Card card3() {
         return new Card(Suit.SPADES, Rank.SIX);
     }
 
     @Bean
-    public Card createCard4() {
+    public Card card4() {
         return new Card(Suit.HEARTS, Rank.TEN);
     }
 
     @Bean
-    public DeckOfCards createdDeck(List<Card> cards) {
+    public DeckOfCards deck(List<Card> cards) {
         return new DeckOfCards(cards);
     }
 }
