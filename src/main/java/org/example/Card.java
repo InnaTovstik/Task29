@@ -1,15 +1,9 @@
 package org.example;
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-@Component
-@Scope("prototype")
 public class Card {
 
-    private Suit suit;
-    private Rank rank;
-
+    private final Suit suit;
+    private final Rank rank;
 
     public Card(Suit suit, Rank rank) {
         this.suit = suit;
@@ -17,7 +11,7 @@ public class Card {
     }
 
     @Override
-    public String toString() {
+  public String toString() {
         return "Card{" +
                 "rank=" + rank +
                 ", suit=" + suit +

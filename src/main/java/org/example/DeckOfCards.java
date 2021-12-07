@@ -1,33 +1,23 @@
 package org.example;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
-@Component
 public class DeckOfCards {
 
-    private ArrayList<Card> deck;
+    private List<Card> deck;
 
-    public DeckOfCards() {
-        this.deck = this.myDeck();
-
-    }
-@Bean
-    private ArrayList<Card> myDeck() {
-        ArrayList<Card> myDeck = new ArrayList<>();
-        for (Suit suit :Suit.values()) {
-            for (Rank rank: Rank.values()) {
-                myDeck.add(new Card(suit, rank));
-            }
-        }
-        return myDeck;
+    public DeckOfCards(List<Card> cards) {
+        deck = new LinkedList<>(cards);
     }
 
     public void shuffle(){
-        Collections.shuffle(this.deck);
-        System.out.println("in shuffle" + deck);
+        Collections.shuffle(deck);
+    }
+
+    @Override
+    public String toString() {
+        return "Deck" + deck;
     }
 }

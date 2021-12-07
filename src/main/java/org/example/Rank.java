@@ -9,5 +9,5 @@ public enum Rank {
     NINE,
     EIGHT,
     SEVEN,
-    SIX;
+    SIX
 }

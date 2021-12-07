@@ -1,10 +1,54 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-           http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
-           http://www.springframework.org/schema/context
-           http://www.springframework.org/schema/context/spring-context.xsd">
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <context:component-scan base-package="org.example"/>
+    <bean class="org.example.DeckOfCards">
+        <constructor-arg index="0" ref="list"/>
+    </bean>
+    <bean id="rankKing" class="org.example.Rank" factory-method="valueOf">
+        <constructor-arg value="KING"/>
+    </bean>
+    <bean id="rankJack" class="org.example.Rank" factory-method="valueOf">
+        <constructor-arg value="JACK"/>
+    </bean>
+    <bean id="rankTen" class="org.example.Rank" factory-method="valueOf">
+        <constructor-arg value="TEN"/>
+    </bean>
+    <bean id="rankSix" class="org.example.Rank" factory-method="valueOf">
+        <constructor-arg value="SIX"/>
+    </bean>
+    <bean id="suitDiamond" class="org.example.Suit" factory-method="valueOf">
+        <constructor-arg value="DIAMONDS"/>
+    </bean>
+    <bean id="suitHearts" class="org.example.Suit" factory-method="valueOf">
+        <constructor-arg value="HEARTS"/>
+    </bean>
+    <bean id="suitSpades" class="org.example.Suit" factory-method="valueOf">
+        <constructor-arg value="SPADES"/>
+    </bean>
+    <bean id="suitClubs" class="org.example.Suit" factory-method="valueOf">
+        <constructor-arg value="CLUBS"/>
+    </bean>
+
+    <util:list id="list">
+        <bean class="org.example.Card">
+            <constructor-arg ref="suitDiamond"/>
+            <constructor-arg ref="rankKing"/>
+        </bean>
+        <bean class="org.example.Card">
+            <constructor-arg ref="suitHearts"/>
+            <constructor-arg ref="rankTen"/>
+        </bean>
+        <bean class="org.example.Card">
+            <constructor-arg ref="suitSpades"/>
+            <constructor-arg ref="rankSix"/>
+        </bean>
+        <bean class="org.example.Card">
+            <constructor-arg ref="suitClubs"/>
+            <constructor-arg ref="rankJack"/>
+        </bean>
+    </util:list>
 </beans>
